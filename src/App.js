@@ -1,20 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { observer } from "mobx-react";
 
 //Components
-import NavBar from "./components/NavBar"
-import Routes from "./components/Routes"
-import Loading from "./components/Loading"
+import NavBar from "./components/NavBar/NavBar";
+import Routes from "./components/Routes";
+import Loading from "./components/Loading/Loading";
 
 //Stores
-import vendorStore from './stores/VendorStore';
+import vendorStore from "./stores/VendorStore";
 
 //Styles
 import { GlobalStyle } from "./styles";
 import { ThemeProvider } from "styled-components";
-import productStore from './stores/ProductStore';
-
-
+import productStore from "./stores/ProductStore";
 
 const theme = {
   dark: {
@@ -45,11 +43,7 @@ function App({ type, color }) {
     <ThemeProvider theme={theme[currentTheme]}>
       <GlobalStyle />
       <NavBar toggleTheme={toggleTheme} currentTheme={currentTheme} />
-      {vendorStore.loading || productStore.loading ?
-        <Loading />
-        :
-        <Routes />
-      }
+      {vendorStore.loading || productStore.loading ? <Loading /> : <Routes />}
     </ThemeProvider>
   );
 }
