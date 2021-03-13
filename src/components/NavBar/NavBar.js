@@ -112,6 +112,7 @@ const NavBar = ({ toggleTheme, currentTheme }) => {
               </Badge>
             </IconButton>
           </div>
+          <SigninButton />
         </Toolbar>
       </AppBar>
     </>
