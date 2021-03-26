@@ -93,7 +93,7 @@ const NavBar = ({ toggleTheme, currentTheme }) => {
     //   <AppBar position="fixed" color="inherit"></AppBar>
     // </>
     <>
-      <AppBar position="fixed" className={classes.appBar} color="inherit">
+      <AppBar position="fixed" className={classes.appBar} color="primary">
         <Toolbar>
           <Typography variant="h6" className={classes.title} color="inherit">
             <img
@@ -112,7 +112,18 @@ const NavBar = ({ toggleTheme, currentTheme }) => {
               </Badge>
             </IconButton>
           </div>
-          <SigninButton />
+
+          {/* SignIn\Out */}
+          {authStore.user ? (
+            <>
+              <UsernameStyled>Hello, {authStore.user.username}</UsernameStyled>
+              <FiLogOut onClick={authStore.signout} size="2em" color="red" />
+            </>
+          ) : (
+            <>
+              <SigninButton />
+            </>
+          )}
         </Toolbar>
       </AppBar>
     </>
