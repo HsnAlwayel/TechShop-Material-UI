@@ -7,9 +7,12 @@ import { observer } from "mobx-react";
 import productStore from "../../../../stores/ProductStore";
 
 //Styles
-import { DetailWrapper } from "../../../../styles";
+import { DetailWrapper } from "./styles";
+import useStyles from "../../styles";
 
 const ProductDetail = () => {
+  const classes = useStyles();
+
   const { productSlug } = useParams();
   const product = productStore.products.find(
     (product) => product.slug === productSlug
@@ -18,16 +21,20 @@ const ProductDetail = () => {
   if (!product) return <Redirect to="/" />;
 
   return (
-    <DetailWrapper>
-      <Link to="/">
-        <p>Back to products</p>
-      </Link>
-      <h1>{product.name}</h1>
-      <img src={product.image} alt={product.name} />
-      <p>{product.desc}</p>
-      <p>{product.price}</p>
-      <DeleteButton productId={product.id} />
-    </DetailWrapper>
+    <div className={classes.content}>
+      <div className={classes.toolbar}>
+        <DetailWrapper>
+          <Link to="/">
+            <p>Back to products</p>
+          </Link>
+          <h1>{product.name}</h1>
+          <img src={product.image} alt={product.name} />
+          <p>{product.desc}</p>
+          <p>{product.price}</p>
+          <DeleteButton productId={product.id} />
+        </DetailWrapper>
+      </div>
+    </div>
   );
 };
 
