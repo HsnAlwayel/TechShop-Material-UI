@@ -9,6 +9,7 @@ import productStore from "../../../../stores/ProductStore";
 //Styles
 import { DetailWrapper } from "./styles";
 import useStyles from "../../styles";
+import UpdateButton from "../../../Buttons/UpdateButton";
 
 const ProductDetail = () => {
   const classes = useStyles();
@@ -30,7 +31,8 @@ const ProductDetail = () => {
           <h1>{product.name}</h1>
           <img src={product.image} alt={product.name} />
           <p>{product.desc}</p>
-          <p>{product.price}</p>
+          <p>{product.price} KD</p>
+          <UpdateButton product={product} />
           <DeleteButton productId={product.id} />
         </DetailWrapper>
       </div>

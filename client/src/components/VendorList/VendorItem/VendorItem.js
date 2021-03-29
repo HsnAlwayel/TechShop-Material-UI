@@ -7,18 +7,43 @@ import DeleteButton from "../../Buttons/DeleteButton";
 import UpdateButton from "../../Buttons/UpdateButton";
 
 //Styles
-import { ProductImage } from "../../../styles";
+import {
+  Card,
+  CardMedia,
+  CardContent,
+  CardActions,
+  Typography,
+  IconButton,
+} from "@material-ui/core";
+import { vendorImage } from "../../../styles";
+import useStyles from "../../ProductList/ProductItem/styles";
 
 const VendorItem = ({ vendor }) => {
+  const classes = useStyles();
   return (
-    <ProductImage className="col-lg-4 col-md-4 col-sm-4">
+    <Card className={classes.root}>
       <Link to={`/vendors/${vendor.slug}`}>
-        <img alt={vendor.name} src={vendor.image} />
+        <CardMedia
+          className={classes.media}
+          image={vendor.image}
+          title={vendor.name}
+        />
+        <CardContent>
+          <div className={classes.cardContent}>
+            <Typography variant="h5" gutterBottom>
+              {vendor.name}
+            </Typography>
+            <Typography variant="h5">{vendor.price}</Typography>
+          </div>
+          <Typography variant="h2" color="textSecondary">
+            {vendor.description}
+          </Typography>
+        </CardContent>
+        <CardActions disableSpacing className={classes.cardActions}>
+          <IconButton aria-label="Add to Cart"></IconButton>
+        </CardActions>
       </Link>
-      <p>{vendor.name}</p>
-      <UpdateButton vendor={vendor} />
-      <DeleteButton vendorId={vendor.id} />
-    </ProductImage>
+    </Card>
   );
 };
 

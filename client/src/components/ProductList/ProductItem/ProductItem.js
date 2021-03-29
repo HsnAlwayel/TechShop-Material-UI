@@ -20,6 +20,7 @@ import useStyles from "./styles";
 
 //Stores
 import cartStore from "../../../stores/CartStore";
+
 const ProductItem = ({ product }) => {
   const classes = useStyles();
 
@@ -43,7 +44,7 @@ const ProductItem = ({ product }) => {
             <Typography variant="h5" gutterBottom>
               {product.name}
             </Typography>
-            <Typography variant="h5">{product.price}</Typography>
+            <Typography variant="h5">{product.price} KD</Typography>
           </div>
           <Typography variant="h2" color="textSecondary">
             {product.description}

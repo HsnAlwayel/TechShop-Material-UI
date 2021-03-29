@@ -14,8 +14,11 @@ import productStore from "../../../../stores/ProductStore";
 
 //Styles
 import { DetailWrapper } from "../../../../styles";
+import useStyles from "../../../ProductList/styles";
 
 const VendorDetail = () => {
+  const classes = useStyles();
+
   const { vendorSlug } = useParams();
   const vendor = vendorStore.vendors.find(
     (vendor) => vendor.slug === vendorSlug
@@ -31,21 +34,25 @@ const VendorDetail = () => {
   }
 
   return (
-    <div className="row">
-      <div className="container">
-        <DetailWrapper className="col-12">
-          <Link to="/vendors">
-            <p>Back to vendors</p>
-          </Link>
-          <h1>{vendor.name}</h1>
-          <img src={vendor.image} alt={vendor.name} />
-          <UpdateButton vendor={vendor} />
-          <DeleteButton vendorId={vendor.Id} />
-        </DetailWrapper>
-      </div>
-      <div className="col-12">
-        <ProductList products={products} />
-        <AddButton vendor={vendor} />
+    <div className={classes.content}>
+      <div className={classes.toolbar}>
+        <div className="row">
+          <div className="container">
+            <DetailWrapper className="col-12">
+              <Link to="/vendors">
+                <p>Back to vendors</p>
+              </Link>
+              <h1>{vendor.name}</h1>
+              <img src={vendor.image} alt={vendor.name} />
+              <UpdateButton vendor={vendor} />
+              <DeleteButton vendorId={vendor.Id} />
+            </DetailWrapper>
+          </div>
+          <div className="col-12">
+            <ProductList products={products} />
+            <AddButton vendor={vendor} />
+          </div>
+        </div>
       </div>
     </div>
   );

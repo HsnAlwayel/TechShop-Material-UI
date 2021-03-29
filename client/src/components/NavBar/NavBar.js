@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 // Stores
 import authStore from "../../stores/authStore";
@@ -34,76 +35,21 @@ const NavBar = ({ toggleTheme, currentTheme }) => {
 
   const classes = useStyles();
   return (
-    // <NavStyled className="navbar navbar-expand-lg ">
-    //   <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-    //     <div className="navbar-nav">
-    //       <Logo className="nav-item nav-link active" to="/">
-    //         <img alt="logo" src={LogoImg} width="50" />
-    //       </Logo>
-
-    //       {authStore.user && authStore.user.role === "admin" && (
-    //         <div className="navbar-nav ml-auto mt-2 mt-lg-0">
-    //           <NavItem className="nav-item nav-link" to="/vendors">
-    //             Vendors
-    //           </NavItem>
-    //           <NavItem className="nav-item nav-link" to="/products">
-    //             Products
-    //           </NavItem>
-    //         </div>
-    //       )}
-
-    //       {authStore.user ? (
-    //         <>
-    //           <UsernameStyled>Hello, {authStore.user.username}</UsernameStyled>
-    //           <FiLogOut onClick={authStore.signout} size="2em" color="red" />
-    //         </>
-    //       ) : (
-    //         <>
-    //           <SigninButton />
-    //         </>
-    //       )}
-
-    //       <div>
-    //         {authStore.user && !authStore.user.vendorSlug && (
-    //           <UsernameStyled onClick={openModal}>
-    //             Create a Vendor
-    //           </UsernameStyled>
-    //         )}
-    //         <VendorModal isOpen={isOpen} closeModal={closeModal} />;
-    //       </div>
-    //       <div class="custom-control custom-switch">
-    //         <input
-    //           type="checkbox"
-    //           className="custom-control-input"
-    //           id="customSwitch1"
-    //         />
-    //         <label
-    //           className="custom-control-label"
-    //           for="customSwitch1"
-    //           onClick={toggleTheme}
-    //         >
-    //           {" "}
-    //           {currentTheme === "light" ? "Dark" : "Light"} Mode
-    //         </label>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </NavStyled>
-    // <>
-    //   <AppBar position="fixed" color="inherit"></AppBar>
-    // </>
     <>
       <AppBar position="fixed" className={classes.appBar} color="primary">
         <Toolbar>
           <Typography variant="h6" className={classes.title} color="inherit">
-            <img
-              src={LogoImg}
-              alt="commerce.js"
-              height="25px"
-              className={classes.image}
-            />{" "}
+            <Link to={"/"}>
+              <img
+                src={LogoImg}
+                alt="commerce.js"
+                height="25px"
+                className={classes.image}
+              />
+            </Link>{" "}
             Commerce.js
           </Typography>
+
           <div className={classes.grow} />
           <div className={classes.button}>
             <IconButton aria-label="Show cart items" color="inherit">
