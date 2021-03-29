@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { observer } from "mobx-react";
 import { Link } from "react-router-dom";
 import {
@@ -18,20 +18,19 @@ import UpdateButton from "../../Buttons/UpdateButton";
 import { ProductImage } from "../../../styles";
 import useStyles from "./styles";
 
+//Stores
+import cartStore from "../../../stores/CartStore";
 const ProductItem = ({ product }) => {
   const classes = useStyles();
-  console.log(product);
+
+  const [quantity, setQuantity] = useState(0);
+
+  const handleAdd = () => {
+    const newItem = { quantity, productId: product.id };
+    cartStore.addItem(newItem);
+  };
+
   return (
-    // <ProductImage className="col-lg-4 col-md-4 col-sm-4">
-    //   <Link to={`/products/${product.slug}`}>
-    //     <img alt={product.name} src={product.image} />
-    //   </Link>
-    //   <p>{product.name}</p>
-    //   <p className="product-price">{product.price} KD</p>
-    //   <UpdateButton product={product} />
-    //   <DeleteButton productId={product.id} />
-    //   {console.log("ProductItem -> product.id", product.id)}
-    // </ProductImage>
     <Card className={classes.root}>
       <CardMedia
         className={classes.media}
