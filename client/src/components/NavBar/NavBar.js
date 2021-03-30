@@ -1,27 +1,24 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { observer } from "mobx-react";
 
 // Stores
 import authStore from "../../stores/authStore";
 
 //Styles
-import { Logo, NavStyled, NavItem, UsernameStyled } from "../../styles";
+import { UsernameStyled } from "../../styles";
 import LogoImg from "../../favicon.ico";
 import { FiLogOut } from "react-icons/fi";
 import useStyles from "./styles";
 
 //Components
 import SigninButton from "../Buttons/SigninButton";
-import { observer } from "mobx-react";
-import VendorModal from "../../modals/VendorModal";
 
 //materialUi
 import {
   AppBar,
   Toolbar,
   IconButton,
-  MenuItem,
-  Menu,
   Badge,
   Typography,
 } from "@material-ui/core";
