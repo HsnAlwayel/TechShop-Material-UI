@@ -2,11 +2,10 @@ import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 
 // Stores
-// import usersStore from "../stores/UserStore";
+import authStore from "../../stores/authStore";
 
 //Styles
 import { CreateButtonStyled } from "../../styles";
-import authStore from "../../stores/authStore";
 import useStyles from "../ProductList/styles";
 
 const SignupForm = ({ isOpen, closeModal, oldUser }) => {
@@ -27,9 +26,8 @@ const SignupForm = ({ isOpen, closeModal, oldUser }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     authStore.signup(user);
+    if (authStore.user) return <Redirect to={"/"} />;
   };
-
-  if (authStore.user) return <Redirect to={"/"} />;
 
   return (
     <div className={classes.content}>
@@ -45,6 +43,7 @@ const SignupForm = ({ isOpen, closeModal, oldUser }) => {
               type="text"
               className="form-control"
               onChange={handleChange}
+              required
             />
           </div>
           <div className="form-group row">
@@ -77,6 +76,7 @@ const SignupForm = ({ isOpen, closeModal, oldUser }) => {
               type="text"
               className="form-control"
               onChange={handleChange}
+              required
             />
           </div>
           <div className="form-group">
@@ -87,6 +87,7 @@ const SignupForm = ({ isOpen, closeModal, oldUser }) => {
               type="password"
               className="form-control"
               onChange={handleChange}
+              required
             />
           </div>
 
