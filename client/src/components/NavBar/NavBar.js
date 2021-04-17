@@ -23,6 +23,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import { ShoppingCart } from "@material-ui/icons";
+import cartStore from "../../stores/CartStore";
 
 const NavBar = ({ toggleTheme, currentTheme }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -50,8 +51,13 @@ const NavBar = ({ toggleTheme, currentTheme }) => {
           <div className={classes.grow} />
           <div className={classes.button}>
             <IconButton aria-label="Show cart items" color="inherit">
-              <Badge color="secondary">
-                <ShoppingCart />
+              <Badge
+                badgeContent={() => cartStore.totalQuantity}
+                color="secondary"
+              >
+                <Link to="/cart">
+                  <ShoppingCart />
+                </Link>
               </Badge>
             </IconButton>
           </div>

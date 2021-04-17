@@ -7,6 +7,7 @@ import ProductDetail from "./ProductList/ProductItem/ProductDetail/ProductDetail
 import VendorList from "./VendorList/VendorList";
 import VendorDetail from "./VendorList/VendorItem/VendorDetail/VendorDetail";
 import SignupForm from "../components/SignUpForm/SignupForm";
+import Cart from "../components/Cart/Cart";
 // Stores
 import productStore from "../stores/ProductStore";
 
@@ -24,6 +25,9 @@ const Routes = () => {
       </Route>
       <Route path="/products/:productSlug">
         <ProductDetail />
+      </Route>
+      <Route path="/cart">
+        <Cart />
       </Route>
       <Route exact path="/">
         <ProductList products={productStore.products} />

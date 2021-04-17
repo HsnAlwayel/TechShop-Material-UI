@@ -39,21 +39,23 @@ const ProductItem = ({ product }) => {
           image={product.image}
           title={product.name}
         />
-        <CardContent>
-          <div className={classes.cardContent}>
-            <Typography variant="h5" gutterBottom>
-              {product.name}
-            </Typography>
-            <Typography variant="h5">{product.price} KD</Typography>
-          </div>
-          <Typography variant="h2" color="textSecondary">
-            {product.description}
-          </Typography>
-        </CardContent>
-        <CardActions disableSpacing className={classes.cardActions}>
-          <IconButton aria-label="Add to Cart"></IconButton>
-        </CardActions>
       </Link>
+      <CardContent>
+        <div className={classes.cardContent}>
+          <Typography variant="h5" gutterBottom>
+            {product.name}
+          </Typography>
+          <Typography variant="h5">{product.price} KD</Typography>
+        </div>
+        <Typography variant="h2" color="textSecondary">
+          {product.description}
+        </Typography>
+      </CardContent>
+      <CardActions disableSpacing className={classes.cardActions}>
+        <IconButton aria-label="Add to Cart" onClick={() => handleAdd()}>
+          <AddShoppingCart />
+        </IconButton>
+      </CardActions>
     </Card>
   );
 };

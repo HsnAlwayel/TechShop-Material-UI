@@ -13,6 +13,7 @@ class CartStore {
     } else {
       this.items.push(newItem);
     }
+    console.log(this.items);
   };
 
   removeItemFromCart = async (itemId) => {
