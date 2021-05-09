@@ -17,6 +17,7 @@ import {
 } from "@material-ui/core";
 import { vendorImage } from "../../../styles";
 import useStyles from "../../ProductList/ProductItem/styles";
+import authStore from "../../../stores/authStore";
 
 const VendorItem = ({ vendor }) => {
   const classes = useStyles();
@@ -28,21 +29,29 @@ const VendorItem = ({ vendor }) => {
           image={vendor.image}
           title={vendor.name}
         />
-        <CardContent>
-          <div className={classes.cardContent}>
-            <Typography variant="h5" gutterBottom>
-              {vendor.name}
-            </Typography>
-            <Typography variant="h5">{vendor.price}</Typography>
-          </div>
-          <Typography variant="h2" color="textSecondary">
-            {vendor.description}
-          </Typography>
-        </CardContent>
-        <CardActions disableSpacing className={classes.cardActions}>
-          <IconButton aria-label="Add to Cart"></IconButton>
-        </CardActions>
       </Link>
+      <CardContent>
+        <div className={classes.cardContent}>
+          <Typography variant="h5" gutterBottom>
+            {vendor.name}
+          </Typography>
+          <Typography variant="h5">{vendor.price}</Typography>
+        </div>
+        <Typography variant="h2" color="textSecondary">
+          {vendor.description}
+        </Typography>
+      </CardContent>
+      <CardActions disableSpacing className={classes.cardActions}>
+        {/* <IconButton aria-label="Add to Cart"></IconButton> */}
+        {authStore.user ? (
+          <>
+            <UpdateButton vendor={vendor} />
+            <DeleteButton vendorId={vendor.id} />
+          </>
+        ) : (
+          <></>
+        )}
+      </CardActions>
     </Card>
   );
 };

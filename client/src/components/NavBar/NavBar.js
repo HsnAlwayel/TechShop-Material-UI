@@ -26,10 +26,10 @@ import { ShoppingCart } from "@material-ui/icons";
 import cartStore from "../../stores/CartStore";
 
 const NavBar = ({ toggleTheme, currentTheme }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
 
-  const closeModal = () => setIsOpen(false);
-  const openModal = () => setIsOpen(true);
+  // const closeModal = () => setIsOpen(false);
+  // const openModal = () => setIsOpen(true);
 
   const classes = useStyles();
   return (
@@ -44,8 +44,13 @@ const NavBar = ({ toggleTheme, currentTheme }) => {
                 height="25px"
                 className={classes.image}
               />
-            </Link>{" "}
-            Commerce.js
+            </Link>
+            Commerce.js &nbsp;&nbsp;|&nbsp;&nbsp;
+            <Link to={"/vendors"} style={{ color: "white" }}>
+              <Typography variant="h6" className={classes.title}>
+                Vendors
+              </Typography>
+            </Link>
           </Typography>
 
           <div className={classes.grow} />

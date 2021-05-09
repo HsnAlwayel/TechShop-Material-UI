@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { observer } from "mobx-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   Card,
   CardMedia,
@@ -15,7 +15,6 @@ import DeleteButton from "../../Buttons/DeleteButton";
 import UpdateButton from "../../Buttons/UpdateButton";
 
 //Styles
-import { ProductImage } from "../../../styles";
 import useStyles from "./styles";
 
 //Stores
@@ -30,6 +29,12 @@ const ProductItem = ({ product }) => {
     const newItem = { quantity, productId: product.id };
     cartStore.addItem(newItem);
   };
+
+  let location = useLocation();
+  console.log(
+    "🚀 ~ file: ProductItem.js ~ line 34 ~ ProductItem ~ location",
+    location
+  );
 
   return (
     <Card className={classes.root}>
@@ -53,7 +58,14 @@ const ProductItem = ({ product }) => {
       </CardContent>
       <CardActions disableSpacing className={classes.cardActions}>
         <IconButton aria-label="Add to Cart" onClick={() => handleAdd()}>
-          <AddShoppingCart />
+          {location.pathname === "/" ? (
+            <AddShoppingCart />
+          ) : (
+            <>
+              <UpdateButton product={product} />
+              <DeleteButton productId={product.id} />
+            </>
+          )}
         </IconButton>
       </CardActions>
     </Card>
